@@ -1,0 +1,24 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n admin_modify adminmedia %}
+
+{% block extrahead %}{{ block.super }}
+{% url admin:jsi18n as jsi18nurl %}
+{{ form.media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />{% endblock %}
+
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+
+
+
+{% block content %}
+<Table>
+	<ul>
+		{%for i in rank%}
+			<TR><TD> {{ i.Estagiario }} </TD>
+			<TD> {{ i.DataInicial }}</TD><br /></TR>
+		{%endfor%}
+	</ul>
+</Table>
+{% endblock %}

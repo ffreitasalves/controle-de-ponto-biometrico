@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="/media2/admin/css/widgets.css"/></link>
+
+<link rel="stylesheet" type="text/css" href="/media2/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/media2/admin/css/login.css" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/media2/admin/css/ie.css" /><![endif]-->
+    <script type="text/javascript" src="/media2/js/jquery.js"></script>
+    <script type="text/javascript" src="../../../jsi18n/"></script>
+    <script type="text/javascript" src="/media2/admin/js/core.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/getElementsBySelector.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/media2/js/fingerprint.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/admin/DateTimeShortcuts.js"></script> 
+	<script type="text/javascript" src="/media2/js/adminwidgets.js"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+$(document).ready(function() {
+	
+	$("tr:nth-child(odd)").css('background-color','LightGray')
+
+});
+
+</script>
+</HEAD>
+<body>
+{% if error_message %}<p><strong>{{ error_message}}</strong></p>{% endif %}
+<TABLE border=1><TR><TD>Horarios</TD>
+	{% for e in estagiarios %}
+		<TD>{{ e }}</TD>
+	{% endfor %}
+	</TR>
+	{% for linha in colunas %}
+	     <TR>
+		{% for item in linha %}
+			<TD>
+			{% if item == ' ' %}
+				&nbsp;
+			{% else %}
+				{{ item|safe }}
+			{% endif %}
+			</TD>
+		{% endfor %}
+		</TR>
+	{% endfor %}
+<p></p>
+</body>
+</HTML>

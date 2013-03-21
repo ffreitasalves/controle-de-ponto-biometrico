@@ -1,0 +1,92 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block extrastyle %}{% load adminmedia %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/login.css" />
+    <script type="text/javascript" src="/media2/js/jquery.js"></script>
+    <script type="text/javascript" src="../../../jsi18n/"></script>
+    <script type="text/javascript" src="/media2/admin/js/core.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/getElementsBySelector.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/media2/js/fingerprint.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/admin/DateTimeShortcuts.js"></script> 
+<script language="JavaScript" type="text/JavaScript">
+
+$(document).ready(function() {
+
+	$("#id_btnregistra").click(function() {
+		$("#id_Impressao").val(capture());
+		valida();
+	});
+
+	$("#id_btnregistra").focus();
+});
+
+function valida(){
+	var i;
+	var resposta;
+	for(i=0;i<document.teste.id_bd.length;i++){
+		try{
+			resposta = compara($('#id_Impressao').val(), document.teste.id_bd[i].value)
+			if(resposta=="erro"){
+				return false;
+			}
+			if (resposta==true){
+				$('#id_escolhido').val(document.teste.id_bd[i].name);
+				$('#id_teste').submit();
+				return true;
+			}
+			else {
+				$('#id_escolhido').val('');
+			}
+		}
+		catch(e){
+			break;
+		}
+		
+	}
+	if($('#id_escolhido').val()==''){
+		alert('Usuario nao detectado');
+	}
+
+}
+</script>
+
+{% endblock %}
+
+{% block bodyclass %}login{% endblock %}
+
+{% block content_title %}
+<div id="user-tools">  
+	<a href="/relatorios/">Relat&oacute;rios</a>
+
+</div>    
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+{% if error_message %}
+<p class="errornote">{{ error_message }}</p>
+{% endif %}
+<div id="content-main">
+<form name="teste" action="/Registro/" method="post" id="id_teste">{% csrf_token %}
+  <div class="submit-row">
+    <input type="hidden" id="id_Impressao" name="Impressao" />
+    <input type="hidden" id="id_escolhido" name="escolhido"/>
+    <label>&nbsp;</label><input type="button" id="id_btnregistra" value="Registrar">
+	{% for c in campos %}
+		{{ c|safe }}
+	{% endfor %}
+	<BR>
+	{{ func }}
+  </div>
+  
+</div>
+{% endblock %}
+
+</form>
+</body>
+</html>

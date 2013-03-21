@@ -1,0 +1,16 @@
+﻿<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="/media2/admin/css/widgets.css"/></link>
+<script type="text/javascript" src="/media2/admin//js/core.js"></script>
+<script type="text/javascript" src="/media2/js/adminwidgets.js"></script>
+{{ form.media }}
+</HEAD>
+<body>
+{% if error_message %}<p><strong>{{ error_message}}</strong></p>{% endif %}
+<FORM name='Filtro' method='POST' action ='./'>
+{{ form.as_table }}
+<p></p>
+<input type='Submit' value='Filtrar'>
+</form>
+</body>
+</HTML>

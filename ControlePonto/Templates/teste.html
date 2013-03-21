@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br" >
+<head>
+<title>Registro de Ponto | Controle de Ponto</title>
+<link rel="stylesheet" type="text/css" href="/media2/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/media2/admin/css/login.css" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/media2/admin/css/ie.css" /><![endif]-->
+    <script type="text/javascript" src="/media2/js/jquery.js"></script>
+    <script type="text/javascript" src="../../../jsi18n/"></script>
+    <script type="text/javascript" src="/media2/admin/js/core.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/getElementsBySelector.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/media2/js/fingerprint.js"></script>
+    <script type="text/javascript" src="/media2/admin/js/admin/DateTimeShortcuts.js"></script> 
+ 
+<meta name="robots" content="NONE,NOARCHIVE" />
+<script language="JavaScript" type="text/JavaScript">
+
+$(document).ready(function() {
+
+	$("#id_btnregistra").click(function() {
+		$("#id_Impressao").val(capture());
+		valida();
+	});
+
+	$("#id_btnregistra").focus();
+});
+
+function valida(){
+	var i;
+	for(i=0;i<document.teste.id_bd.length;i++){
+		if (compara($('#id_Impressao').val(), document.teste.id_bd[i].value)==true){
+			$('#id_escolhido').val(document.teste.id_bd[i].name);
+			$('#id_teste').submit();
+			break;
+		}
+		else {
+			$('#id_escolhido').val('');
+		}
+		
+	}
+	if($('#id_escolhido').val()==''){
+		alert('Usuario nao detectado');
+	}
+
+}
+</script>
+</head>
+ 
+ 
+<body class="login">
+ 
+<!-- Container -->
+<div id="container">
+ 
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+<OBJECT classid="CLSID:F66B9251-67CA-4d78-90A3-28C2BFAE89BF"		 
+		height=0 width=0 VIEWASTEXT>
+</OBJECT>
+<h1 id="site-name">Controle de Ponto</h1>
+ 
+        </div>
+        
+        
+ 
+    </div>
+    <!-- END Header -->
+    
+    
+ 
+        
+ 
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        
+        
+ 
+<div id="content-main">
+<ul>
+<li>
+  <div align="center"><a href='./HorarioFixo/'>Horarios Fixos</a><br />
+  </div>
+</li>
+<li>
+  <div align="center"><a href='./HorariosFeitos/'>Horarios Registrados</a><br />
+  </div>
+</li>
+<li>
+  <div align="center"><a href='./HorariosAceitos/'>Horarios Aceitos</a><br />
+  </div>
+</li>
+<li>
+  <div align="center"><a href='./BancoHoras/'>Banco de Horas</a><br />
+  </div>
+</li>
+</ul>
+  </div>
+ 
+</div>
+ 
+        
+        <div align="center"><br class="clear" />
+        </div>
+</div>
+    <div align="center">
+      <!-- END Content -->
+   
+  </div>
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+ 
+
+
+</form>
+</body>
+</html>

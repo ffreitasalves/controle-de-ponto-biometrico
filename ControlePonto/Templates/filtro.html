@@ -1,0 +1,55 @@
+﻿{% extends 'admin/base_site.html' %}
+{% load i18n admin_modify adminmedia %}
+
+{% block extrahead %}{{ block.super }}
+{% url admin:jsi18n as jsi18nurl %}
+{{ form.media }}
+<script language="JavaScript" type="text/JavaScript">
+$(document).ready(function() {
+	
+
+	$('#id_De').focus(function(){
+		$(this).calendario({
+				target:'#id_De'	
+		});
+	});
+	
+	$('#id_Ate').focus(function(){
+		$(this).calendario({
+				target:'#id_Ate'	
+		});
+	});
+
+
+	$('#id_ests_0').click(function(){	    
+	    if (this.checked) {
+		    $('input[type=checkbox]').each(function(){
+			    this.checked = true;
+		    });   
+	    }
+	    else {
+                $('input[type=checkbox]').each(function(){
+			    this.checked = false;
+		    }); 
+	    }
+	});
+
+
+});
+
+</script>
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />{% endblock %}
+
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+
+
+
+{% block content %}
+<FORM name='Filtro' method='POST' action ='./'>
+{{ form.as_table }}
+<p></p>
+<input type='Submit' value='Filtrar'>
+</form>
+{% endblock %}
