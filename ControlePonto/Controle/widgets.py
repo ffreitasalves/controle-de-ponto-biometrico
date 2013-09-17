@@ -1,11 +1,3 @@
-# Copyright (c) 2008 Joost Cassee
-# Licensed under the terms of the MIT License (see LICENSE.txt)
-
-"""
-This TinyMCE widget was copied and extended from this code by John D'Agostino:
-http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
-"""
-
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
@@ -15,10 +7,13 @@ from django.utils.html import escape
 from django.utils import simplejson
 from django.utils.safestring import mark_safe
 from django.utils.encoding import smart_unicode
-#import tinymce.settings
+
 
 
 class impressao(forms.Textarea):
+    """
+    Aqui eu crio um widget com um botão que será usado para ligar acionar o Hamster II e pegar a digital.
+    """
     def render(self,name,value,attrs=None):
         if value is None: value=''
         value = smart_unicode(value)
