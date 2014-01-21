@@ -123,5 +123,5 @@ AD_LDAP_URL = 'ldap://' #Coloque o IP do servidor ldap
 
 AUTHENTICATION_BACKENDS = (
     'auth.ActiveDirectoryBackend',
-#    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
