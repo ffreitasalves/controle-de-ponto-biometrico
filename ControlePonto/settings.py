@@ -122,6 +122,6 @@ AD_SEARCH_FIELDS = ['sAMAccountName','memberOf']
 AD_LDAP_URL = 'ldap://' #Coloque o IP do servidor ldap
 
 AUTHENTICATION_BACKENDS = (
-    'auth.ActiveDirectoryBackend',
+    #'auth.ActiveDirectoryBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
