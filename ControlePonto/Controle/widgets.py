@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
